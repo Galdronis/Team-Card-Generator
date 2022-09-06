@@ -6,6 +6,9 @@ class Manager extends Employee {
         super(name, id, email, 'Manager')
         this.officeNumber = officeNumber
     }
+    getRole() {
+        return "Manager"
+    }
 }
 
 // const test = new Manager('Nich', 1, 'gmail@gmail.com', 1)

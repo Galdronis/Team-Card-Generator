@@ -5,6 +5,10 @@ class Employee {
         this.email = email
         this.title = title
     }
+
+    getRole() {
+        return "Employee"
+    }
 }
 
 // const test = new Employee('Nich', 1, 'nich.oettinger@gmail.com', "CEO")

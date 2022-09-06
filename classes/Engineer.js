@@ -6,6 +6,9 @@ class Engineer extends Employee {
         super(name, id, email, 'Engineer')
         this.userName = userName
     }
+    getRole() {
+        return "Engineer"
+    }
 }
 
 // const test = new Engineer('Nich', 2, 'gmail@gmail.com', 'Galdronis')

@@ -4,7 +4,48 @@ const Employee = require("./classes/Employee.js")
 const Engineer = require("./classes/Engineer.js")
 const Intern = require("./classes/Intern.js")
 const Manager = require("./classes/Manager.js")
-employeeBucket = []
+const employeeBucket = []
+var cardbucket = ''
+var html = ''
+
+const generatecards = () => {
+    let card = '';
+    
+    employeeBucket.forEach(Element => {
+        card = 
+`<div class="employee-card">
+    <div class="card-head">
+        <h2 class="title">${Element.name}</h2>
+        <h3 class="title">${Element.getRole()}</h3>
+    </div>
+    <div class="info">
+        <ul class="info-list">
+            <li class="list-item">ID: ${Element.id}</li>
+            <li class="list-item">Email: ${Element.email} </li>
+            <li class="list-item">Github: ${Element.github}</li>
+            <li class="list-item">Office number: ${Element.office}</li>
+        </ul>
+    </div>
+</div>`
+cardbucket = cardbucket.concat(card);
+    })
+  console.log(cardbucket);
+    html = `<!DOCTYPE html>
+    <html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>` + cardbucket + `</body>
+    </html>`;
+    console.log(html);
+
+    fs.writeFile('index.html', html, (err) => 
+    err ? console.log(err) : console.log("index.html created"))
+    
+}
 
 const init = () => {
     return inquirer.prompt([
@@ -54,6 +95,8 @@ const anotherEmployee = () => {
             createEngineer()
         } else if (answer.continue === "Create intern") {
             createIntern()
+        } else if (answer.continue === 'My team is finished') {
+            generatecards()
         }
     })
     
